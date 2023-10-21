@@ -21,8 +21,8 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          {% if current_user.is_authenticated %}
-          {% if current_user.is_admin %}
+          {% if user.is_authenticated %}
+          {% if user.is_admin %}
           <li class="nav-item">
             <a class="nav-link text-center" href="{# url 'admin' #}">Admin</a>
           </li>
@@ -41,7 +41,7 @@
           </li>
           {% endif %}
           <li class="nav-item">
-            <a class="nav-link text-center" href="{# url 'logout' #}">Logout</a>
+            <a class="nav-link text-center" href="{% url 'logout' %}">Logout</a>
           </li>
           {% else %}
           <li class="nav-item">
