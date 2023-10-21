@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+<form method="post" action="{% url 'login' %}">
+    <h1 class="text-center">Login</h1>
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" class="form-control" id="name" aria-describedby="nameHelp" name="name" placeholder="Name" required autofocus>
+    <div id="nameHelp" class="form-text">We'll never share your name with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password" required>
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="is_admin">
+    <label class="form-check-label" for="exampleCheck1">Are you Admin?</label>
+  </div>
+  <button type="submit" class="btn btn-primary w-100">Submit</button>
+</form>
+{% endblock %}

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% load static %}
+  <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+  <title>{% block title %}{% endblock %} | Quiz App</title>
+  <link rel="icon" href="{% static 'img/favicon.ico' %}">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="{% static 'img/logo.png' %}" alt="" width="30" height="30" class="d-inline-block">
+        QuizApp
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          {% if current_user.is_authenticated %}
+          {% if current_user.is_admin %}
+          <li class="nav-item">
+            <a class="nav-link text-center" href="{% url 'admin' %}">Admin</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link text-center" href="{% url 'add_questions' %}">Add Questions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-center" href="{% url 'quiz' %}">Quiz</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-center" href="{% url 'result' %}">Result</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-center" href="{% url 'leaderboard' %}">Leaderboard</a>
+          </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link text-center" href="{% url 'logout' %}">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link text-center" href="{% url 'login' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-center" href="{% url 'register' %}">Register</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  {% if messages %}
+  {% for category, message in messages %}
+  <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+    <strong>{{ category.upper() }}</strong> {{ message.title( %}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
+  {% endif %}
+  <div class="container mt-5 mb-5">
+    {% block body %}{% endblock %}
+  </div>
+<style>
+.nav-link:hover{
+    color: white;
+    border-style: solid;
+    background-color: blue;
+    border-color: blue;
+    border-radius: 13px;
+}
+.navbar .navbar-nav .nav-link {
+  padding: 0.6em;
+}
+.navbar .navbar-brand {
+  padding: 0 0.6em;
+}
+@media only screen and (min-width: 992px) {
+  .navbar {
+    padding: 0;
+  }
+  .navbar .navbar-nav .nav-link {
+    padding: 1em 0.7em;
+  }
+  .navbar .navbar-brand {
+    padding: 0 0.8em;
+
+.navbar .navbar-nav .nav-link {
+  padding: 1em 0.7em;
+  transition: all 0.5s;
+}
+</style>
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+</html>
