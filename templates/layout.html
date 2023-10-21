@@ -24,31 +24,31 @@
           {% if current_user.is_authenticated %}
           {% if current_user.is_admin %}
           <li class="nav-item">
-            <a class="nav-link text-center" href="{% url 'admin' %}">Admin</a>
+            <a class="nav-link text-center" href="{# url 'admin' #}">Admin</a>
           </li>
           {% else %}
           <li class="nav-item">
-            <a class="nav-link text-center" href="{% url 'add_questions' %}">Add Questions</a>
+            <a class="nav-link text-center" href="{# url 'add_questions' #}">Add Questions</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-center" href="{% url 'quiz' %}">Quiz</a>
+            <a class="nav-link text-center" href="{# url 'quiz' #}">Quiz</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-center" href="{% url 'result' %}">Result</a>
+            <a class="nav-link text-center" href="{# url 'result' #}">Result</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-center" href="{% url 'leaderboard' %}">Leaderboard</a>
+            <a class="nav-link text-center" href="{# url 'leaderboard' #}">Leaderboard</a>
           </li>
           {% endif %}
           <li class="nav-item">
-            <a class="nav-link text-center" href="{% url 'logout' %}">Logout</a>
+            <a class="nav-link text-center" href="{# url 'logout' #}">Logout</a>
           </li>
           {% else %}
           <li class="nav-item">
             <a class="nav-link text-center" href="{% url 'login' %}">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-center" href="{% url 'register' %}">Register</a>
+            <a class="nav-link text-center" href="{# url 'register' #}">Register</a>
           </li>
           {% endif %}
         </ul>
@@ -58,7 +58,7 @@
   {% if messages %}
   {% for category, message in messages %}
   <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-    <strong>{{ category.upper() }}</strong> {{ message.title( %}
+    <strong>{{ category|upper }}</strong> {{ message.title( %}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
   {% endfor %}
