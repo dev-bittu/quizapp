@@ -1,22 +1,28 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from .models import Question
+from .models import Question, Mark
 from django.conf import settings
 from django.contrib import messages
 
 # Create your views here.
 class Quiz(View):
+    login_required = True
+
     def get(self, request):
         questions = Question.objects.all()
         return render(
-                request,
-                "quiz/quiz.html",
-                {"questions": questions}
-                )
+            request,
+            "quiz/quiz.html",
+            {"questions": questions}
+        )
+
+    def post(self, request):
+        mark = Mark(user=request.user)
 
 
 class AddQuestion(View):
     login_required = True
+
     def get(self, request):
         return render(
             request, 

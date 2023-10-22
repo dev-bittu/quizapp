@@ -13,3 +13,11 @@ class Question(models.Model):
 
     def __str__(self):
         return f"Question({self.question}, {self.creator})"
+
+class Mark(models.Model):
+    total = models.IntegerField(blank=False)
+    got = models.IntegerField(blank=False)
+    user = models.ForeignKey(to=User, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return f"Mark({self.got}/{self.total}, {self.user})"
