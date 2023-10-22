@@ -29,10 +29,10 @@
           </li>
           {% else %}
           <li class="nav-item">
-            <a class="nav-link text-center" href="{# url 'add_questions' #}">Add Questions</a>
+            <a class="nav-link text-center" href="{% url 'add_question' %}">Add Questions</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-center" href="{# url 'quiz' #}">Quiz</a>
+            <a class="nav-link text-center" href="{% url 'quiz' %}">Quiz</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-center" href="{# url 'result' #}">Result</a>

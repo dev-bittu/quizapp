@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+
+{% block title %}Add Questions{% endblock %}
+
+{% block body %}
+  <form method="post" action="{% url 'add_question' %}">
+  <h1 class="text-center">
+    Add Questions
+  </h1>
+  <br><br>
+  {% for i in questions %}
+  <div class="mb-3">
+    <label for="InputQuestion{{ i }}" class="form-label">Question {{ i }}*</label>
+    <input type="text" class="form-control" id="InputQuestion{{ i }}" name="q{{ i }}" placeholder="Question {{ i }}" required autofocus>
+  </div>
+  <div class="row">
+    <div class="col">
+      <input type="text" class="form-control" placeholder="Option 1" name="q{{ i }}o1" required>
+    </div>
+    <div class="col">
+    <input type="text" class="form-control" placeholder="Option 2" name="q{{ i }}o2" required>
+  </div>
+  <div class="col">
+    <input type="text" class="form-control" placeholder="Option 3" name="q{{ i }}o3" required>
+  </div>
+  <div class="col">
+    <input type="text" class="form-control" placeholder="Option 4" name="q{{ i }}o4" required>
+  </div>
+  </div>
+  <br>
+  <select class="form-select" name="q{{ i }}c" required>
+    <option selected disabled value=''>Choose Correct Option</option>
+    <option value="A">A</option>
+    <option value="B">B</option>
+    <option value="C">C</option>
+    <option value="D">D</option>
+  </select>
+  <br>
+  {% endfor %}
+  <br>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+    <label class="form-check-label" for="exampleCheck1">I confirmed.</label>
+  </div>
+  <br><br><br>
+  <button type="submit" class="btn btn-primary w-100" {% if not show %}onclick="question_already_added(); return false"{% endif %}>Submit</button>
+</form>
+<script>
+  const question_already_added = () => {
+    alert("You already added questions, wait until administrator not allow you to further add questions")
+  }
+</script>
+{% endblock %}
