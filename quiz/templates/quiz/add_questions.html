@@ -4,13 +4,14 @@
 
 {% block body %}
   <form method="post" action="{% url 'add_question' %}">
+  {% csrf_token %}
   <h1 class="text-center">
     Add Questions
   </h1>
   <br><br>
   {% for i in questions %}
   <div class="mb-3">
-    <label for="InputQuestion{{ i }}" class="form-label">Question {{ i }}*</label>
+    <label for="InputQuestion{{ i }}" class="form-label">Question {{ i }}</label>
     <input type="text" class="form-control" id="InputQuestion{{ i }}" name="q{{ i }}" placeholder="Question {{ i }}" required autofocus>
   </div>
   <div class="row">
@@ -43,11 +44,6 @@
     <label class="form-check-label" for="exampleCheck1">I confirmed.</label>
   </div>
   <br><br><br>
-  <button type="submit" class="btn btn-primary w-100" {% if not show %}onclick="question_already_added(); return false"{% endif %}>Submit</button>
+  <button type="submit" class="btn btn-primary w-100">Submit</button>
 </form>
-<script>
-  const question_already_added = () => {
-    alert("You already added questions, wait until administrator not allow you to further add questions")
-  }
-</script>
 {% endblock %}
