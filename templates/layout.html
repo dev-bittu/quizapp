@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% load static %}
   <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+  <link href="{% static 'css/layout.css' %}" rel="stylesheet">
   <title>{% block title %}{% endblock %} | Quiz App</title>
   <link rel="icon" href="{% static 'img/favicon.ico' %}">
 </head>
@@ -66,35 +67,6 @@
   <div class="container mt-5 mb-5">
     {% block body %}{% endblock %}
   </div>
-<style>
-.nav-link:hover{
-    color: white;
-    border-style: solid;
-    background-color: blue;
-    border-color: blue;
-    border-radius: 13px;
-}
-.navbar .navbar-nav .nav-link {
-  padding: 0.6em;
-}
-.navbar .navbar-brand {
-  padding: 0 0.6em;
-}
-@media only screen and (min-width: 992px) {
-  .navbar {
-    padding: 0;
-  }
-  .navbar .navbar-nav .nav-link {
-    padding: 1em 0.7em;
-  }
-  .navbar .navbar-brand {
-    padding: 0 0.8em;
-
-.navbar .navbar-nav .nav-link {
-  padding: 1em 0.7em;
-  transition: all 0.5s;
-}
-</style>
   <script src="{% static 'js/bootstrap.js' %}"></script>
 </body>
 </html>
