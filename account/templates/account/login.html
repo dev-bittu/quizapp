@@ -4,7 +4,8 @@
 
 {% block body %}
 <form method="post" action="{% url 'login' %}">
-    <h1 class="text-center">Login</h1>
+  {% csrf_token %}
+  <h1 class="text-center">Login</h1>
   <div class="mb-3">
     <label for="name" class="form-label">Name</label>
     <input type="text" class="form-control" id="name" aria-describedby="nameHelp" name="name" placeholder="Name" required autofocus>
