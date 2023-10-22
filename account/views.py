@@ -12,4 +12,4 @@ class Logout(View):
 
 class Register(View):
     def get(self, request):
-        return HttpResponse(request, "This feature id diabled")
+        return render(request, "account/register.html")
