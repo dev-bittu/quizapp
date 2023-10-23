@@ -1,5 +1,5 @@
 from django.core.exceptions import ViewDoesNotExist
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.utils.deprecation import RenameMethodsBase
 from django.views import View
 from django.urls import reverse
@@ -35,5 +35,7 @@ class UploadQuestion(View):
         return render(request, "management/upload_question.html")
 
     def post(self, request):
-        qFile = request.FILE["qFile"]
+        qFile = request.FILES["qFile"]
+        print(qFile)
+        return redirect("manage")
 
