@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block title %}Leaderboard{% endblock %}
+
+{% block body %}
+<div class="row">
+  <h1 class="text-center">Leaderboard</h1>
+</div>
+<div class="row">
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Rank</th>
+      <th scope="col">Name</th>
+      <th scope="col">Got</th>
+      <th scope="col">Total Questions</th>
+      <th scope="col">Total Marks</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for result in results %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ result.user.username }}</td>
+      <td>{{ result.got }}</td>
+      <td>{{ result.total }}</td>
+      <td>{{ result.got }}/{{ result.total }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

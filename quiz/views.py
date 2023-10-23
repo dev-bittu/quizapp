@@ -68,3 +68,11 @@ class Result(View):
     def get(self, request):
         results = Mark.objects.filter(user=request.user)
         return render(request, "quiz/result.html", {"results": results})
+
+class Leaderboard(View):
+    def get(self, request):
+        return render(
+            request, 
+            "quiz/leaderboard.html", 
+            {"results": Mark.objects.all().order_by("-got")[:10]}
+        )
