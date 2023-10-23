@@ -1,9 +1,9 @@
-from django.core.exceptions import ViewDoesNotExist
 from django.shortcuts import redirect, render
 from django.utils.deprecation import RenameMethodsBase
 from django.views import View
 from django.urls import reverse
 from django.conf import settings
+from django.contrib import messages
 from quiz.models import Mark
 from os.path import join
 
@@ -38,11 +38,11 @@ class UploadQuestion(View):
 
     def post(self, request):
         qFile = request.FILES["qFile"]
-        filepath = join(settings.BASE_DIR, "upload")
-        if not filepath.name.endswith(".csv"):
+        filepath = join(settings.BASE_DIR, "upload", "questions.csv")
+        if not str(qFile).endswith(".csv"):
             messages.warning(request, "Only CSV file allowed")
         else:
-            with open("questions.csv", "w") as f:
+            with open(filepath, "wb") as f:
                 for chunk in qFile.chunks():
                     f.write(chunk)
             messages.success(request, "CSV file uploaded")
