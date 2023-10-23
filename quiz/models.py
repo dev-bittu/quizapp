@@ -16,7 +16,7 @@ class Question(models.Model):
 
 class Mark(models.Model):
     total = models.IntegerField(blank=False)
-    got = models.IntegerField(blank=False)
+    got = models.IntegerField(blank=False, default=0)
     user = models.ForeignKey(to=User, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):

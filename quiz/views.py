@@ -17,7 +17,15 @@ class Quiz(View):
         )
 
     def post(self, request):
-        mark = Mark(user=request.user)
+        mark = Mark(user=request.user, total=len(Question.objects.all()))
+        for i in range(1, len(Question.objects.all())+1):
+            q = Question.objects.filter(pk=request.POST.get(f"q{i}", 0)).first()
+            if request.POST.get(f"q{i}o", "") == q.correct_option:
+                mark.got += 1
+        mark.save()
+        messages.success(request, "Marks updated")
+        return redirect("result")
+
 
 
 class AddQuestion(View):
@@ -53,3 +61,10 @@ class AddQuestion(View):
             question.save()
         messages.success(request, "Questions added")
         return redirect("quiz")
+
+
+
+class Result(View):
+    def get(self, request):
+        results = Mark.objects.filter(user=request.user)
+        return render(request, "quiz/result.html", {"results": results, "user": request.user})
