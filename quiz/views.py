@@ -27,7 +27,6 @@ class Quiz(View):
         return redirect("result")
 
 
-
 class AddQuestion(View):
     login_required = True
 
@@ -41,6 +40,7 @@ class AddQuestion(View):
         )
     
     def post(self, request):
+        count = 0
         for i in range(1, settings.GLOBAL_SETTINGS["questions"]+1):
             data = request.POST
             q = data.get(f"q{i}", "")
@@ -59,10 +59,9 @@ class AddQuestion(View):
                 creator=request.user
             )
             question.save()
-        messages.success(request, "Questions added")
+            count += 1
+        messages.success(request, f"{count} questions added")
         return redirect("quiz")
-
-
 
 class Result(View):
     def get(self, request):
