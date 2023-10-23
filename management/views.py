@@ -3,7 +3,9 @@ from django.shortcuts import redirect, render
 from django.utils.deprecation import RenameMethodsBase
 from django.views import View
 from django.urls import reverse
+from django.conf import settings
 from quiz.models import Mark
+from os.path import join
 
 # Create your views here.
 class Manage(View):
@@ -36,6 +38,13 @@ class UploadQuestion(View):
 
     def post(self, request):
         qFile = request.FILES["qFile"]
-        print(qFile)
+        filepath = join(settings.BASE_DIR, "upload")
+        if not filepath.name.endswith(".csv"):
+            messages.warn(request, "Only CSV file allowed")
+        else:
+            with open("questions.csv", "w") as f:
+                for chunk in qFile.chunks():
+                    f.write(chunk)
+            messages.success(request, "CSV file uploaded")
         return redirect("manage")
 
