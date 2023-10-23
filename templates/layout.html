@@ -22,10 +22,10 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          {% if user.is_authenticated %}
-          {% if user.is_admin %}
+          {% if request.user.is_authenticated %}
+          {% if request.user.is_superuser %}
           <li class="nav-item">
-            <a class="nav-link text-center" href="{# url 'admin' #}">Admin</a>
+            <a class="nav-link text-center" href="{% url 'manage' %}">Manage</a>
           </li>
           {% else %}
           <li class="nav-item">
