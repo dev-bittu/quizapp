@@ -18,7 +18,7 @@ class Login(View):
         user = authenticate(username=uname, password=passwd)
         if user is not None:
             login(request, user)
-            messages.success(request, "Logged")
+            messages.success(request, "Logged in")
             return redirect("index")
         else:
             messages.warning(request, "Username or password is incorrect")
@@ -29,7 +29,7 @@ class Logout(View):
         if request.user.is_authenticated:
             logout(request)
             messages.success(request, "Logged out")
-        return render(request, "account/login.html")
+        return redirect("login")
 
 class Register(View):
     def get(self, request):
