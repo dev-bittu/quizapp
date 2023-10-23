@@ -42,7 +42,8 @@ INSTALLED_APPS = [
 
 EXTERNAL_APPS = [
     "account.apps.AccountConfig",
-    "quiz.apps.QuizConfig"
+    "quiz.apps.QuizConfig",
+    "management.apps.ManagementConfig"
 ]
 
 INSTALLED_APPS += EXTERNAL_APPS
