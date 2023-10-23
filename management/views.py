@@ -40,7 +40,7 @@ class UploadQuestion(View):
         qFile = request.FILES["qFile"]
         filepath = join(settings.BASE_DIR, "upload")
         if not filepath.name.endswith(".csv"):
-            messages.warn(request, "Only CSV file allowed")
+            messages.warning(request, "Only CSV file allowed")
         else:
             with open("questions.csv", "w") as f:
                 for chunk in qFile.chunks():
