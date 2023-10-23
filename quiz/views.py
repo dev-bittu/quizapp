@@ -17,8 +17,8 @@ class Quiz(View):
         )
 
     def post(self, request):
-        mark = Mark(user=request.user, total=len(Question.objects.all()))
-        for i in range(1, len(Question.objects.all())+1):
+        mark = Mark(user=request.user, total=Question.objects.count())
+        for i in range(1, Question.objects.count()+1):
             q = Question.objects.filter(pk=request.POST.get(f"q{i}", 0)).first()
             if request.POST.get(f"q{i}o", "") == q.correct_option:
                 mark.got += 1
@@ -67,4 +67,4 @@ class AddQuestion(View):
 class Result(View):
     def get(self, request):
         results = Mark.objects.filter(user=request.user)
-        return render(request, "quiz/result.html", {"results": results, "user": request.user})
+        return render(request, "quiz/result.html", {"results": results})

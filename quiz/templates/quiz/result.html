@@ -10,7 +10,6 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Name</th>
       <th scope="col">Total Questions</th>
       <th scope="col">Correct</th>
       <th scope="col">Total Marks</th>
@@ -20,7 +19,6 @@
     {% for result in results %}
     <tr>
       <th scope="row">{{ forloop.counter }}</th>
-      <td>{{ user.name }}</td>
       <td>{{ result.total }}</td>
       <td>{{ result.got }}</td>
       <td>{{ result.got }}/{{ result.total }}</td>
