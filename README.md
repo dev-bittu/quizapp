@@ -18,7 +18,7 @@ To run this project, you need to have the following installed:
 - Django
 
 # Installation
-1. For linux:
+1. In linux:
 ```bash
 sudo apt install python3 git -y
 pip install pillow
@@ -28,6 +28,7 @@ In Termux:
 apt install python3 git python-pillow -y
 ```
 In windows: ``Install git and python's latest version from their official sites``
+
 2. Clone the repository using the following command:
 ```bash
 git clone https://github.com/dev-bittu/quizapp.git
