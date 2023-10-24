@@ -1,13 +1,15 @@
 from django.shortcuts import redirect, render
-from django.utils.deprecation import RenameMethodsBase
 from django.views import View
 from django.urls import reverse
 from django.conf import settings
 from django.contrib import messages
+from django.utils.decorators import method_decorator
+from django.contrib.admin.views.decorators import staff_member_required
 from quiz.models import Mark
 from os.path import join
 
 # Create your views here.
+@method_decorator(staff_member_required, name="dispatch")
 class Manage(View):
     def get(self, request):
         panel_options = {
@@ -26,12 +28,12 @@ class Manage(View):
             {"panel_options": panel_options}
         )
 
-
+@method_decorator(staff_member_required, name="dispatch")
 class Results(View):
     def get(self, request):
         return render(request, "management/results.html", {"results": Mark.objects.all()})
 
-
+@method_decorator(staff_member_required, name="dispatch")
 class UploadQuestion(View):
     def get(self, request):
         return render(request, "management/upload_question.html")

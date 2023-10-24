@@ -3,11 +3,12 @@ from django.views import View
 from .models import Question, Mark
 from django.conf import settings
 from django.contrib import messages
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@method_decorator(login_required, name="dispatch")
 class Quiz(View):
-    login_required = True
-
     def get(self, request):
         questions = Question.objects.all()
         return render(
@@ -26,10 +27,8 @@ class Quiz(View):
         messages.success(request, "Marks updated")
         return redirect("result")
 
-
+@method_decorator(login_required, name="dispatch")
 class AddQuestion(View):
-    login_required = True
-
     def get(self, request):
         return render(
             request, 
@@ -63,6 +62,7 @@ class AddQuestion(View):
         messages.success(request, f"{count} questions added")
         return redirect("quiz")
 
+@method_decorator(login_required, name="dispatch")
 class Result(View):
     def get(self, request):
         results = Mark.objects.filter(user=request.user)

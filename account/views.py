@@ -3,6 +3,8 @@ from django.shortcuts import redirect, render
 from django.views import View
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 class Login(View):
@@ -24,11 +26,11 @@ class Login(View):
             messages.warning(request, "Username or password is incorrect")
         return render(request, "account/login.html")
 
+@method_decorator(login_required, name="dispatch")
 class Logout(View):
     def get(self, request):
-        if request.user.is_authenticated:
-            logout(request)
-            messages.success(request, "Logged out")
+        logout(request)
+        print("work")
         return redirect("login")
 
 class Register(View):
