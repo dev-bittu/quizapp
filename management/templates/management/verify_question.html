@@ -12,6 +12,7 @@
 </div>
 <div class="row mt-3">
   <form action="{% url 'verify_question' %}" method="post">
+    {% csrf_token %}
     <table class="table">
     <thead>
       <tr>
