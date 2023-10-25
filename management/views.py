@@ -61,4 +61,16 @@ class VerifyQuestion(View):
         return render(request, "management/verify_question.html", {"questions": qs})
 
     def post(self, request):
-        print(request.POST)
+        count = 0
+        for q, v in request.POST.items():
+            if q.startswith("q") and v == "on":
+                id = q[1:]
+                q = Question.objects.filter(id=id).first()
+                if q is not None:
+                    q.verified = True
+                    q.save()
+                    count += 1
+                else:
+                    messages.warning(request, f"No question exists with id {id}")
+        messages.success(request, f"{count} questions added")
+        return redirect("manage")
