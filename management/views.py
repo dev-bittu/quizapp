@@ -5,7 +5,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.utils.decorators import method_decorator
 from django.contrib.admin.views.decorators import staff_member_required
-from quiz.models import Mark
+from quiz.models import Mark, Question
 from os.path import join
 
 # Create your views here.
@@ -16,6 +16,10 @@ class Manage(View):
             "Upload Questions": {
                 "link": reverse("upload_question"),
                 "btntxt": "Upload"
+            },
+            "Verify Questions": {
+                "link": reverse("verify_question"),
+                "btntxt": "Verify"
             },
             "Get Results": {
                 "link": reverse("results"),
@@ -50,3 +54,11 @@ class UploadQuestion(View):
             messages.success(request, "CSV file uploaded")
         return redirect("manage")
 
+@method_decorator(staff_member_required, name="dispatch")
+class VerifyQuestion(View):
+    def get(self, request):
+        qs = Question.objects.filter(verified=False)
+        return render(request, "management/verify_question.html", {"questions": qs})
+
+    def post(self, request):
+        print(request.POST)

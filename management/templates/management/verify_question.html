@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+
+{% block title %}Manage{% endblock %}
+
+{% block body %}
+</div>
+<div class="container-fluid">
+<div class="row mt-5">
+  <h1 class="text-center">
+    Verify Questions
+  </h1>
+</div>
+<div class="row mt-3">
+  <form action="{% url 'verify_question' %}" method="post">
+    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onchange="checkAll(this)">
+            <label class="form-check-label" for="flexCheckDefault">
+              Select All
+            </label>
+          </div>
+        </th>
+        <th scope="col">Questions</th>
+        <th scope="col">Option1</th>
+        <th scope="col">Option2</th>
+        <th scope="col">Option3</th>
+        <th scope="col">Option4</th>
+        <th scope="col">Correct Option</th>
+        <th scope="col">Creator</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for q in questions %}
+    <tr>
+      <th scope="row">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="q{{q.id}}">
+        </div>
+      </th>
+      <th>{{ q.question }}</th>
+      <th>{{ q.option1 }}</th>
+      <th>{{ q.option2 }}</th>
+      <th>{{ q.option3 }}</th>
+      <th>{{ q.option4 }}</th>
+      <th>{{ q.correct_option }}</th>
+      <th>{{ q.creator.username }}</th>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+    <br>
+    <button type="submit" class="btn btn-primary w-100">Verify</button>
+  </form>
+</div>
+<script>
+  let checkboxes = document.querySelectorAll("input[type = 'checkbox']");
+  const checkAll = (myCheckBox)=>{
+    let chkd = myCheckBox.checked;
+    checkboxes.forEach((checkboxe)=>{
+      checkboxe.checked = chkd;
+    });
+  };
+</script>
+<div>
+{% endblock %}

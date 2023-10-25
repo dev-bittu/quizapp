@@ -10,6 +10,7 @@ class Question(models.Model):
     option4 = models.CharField(blank=False, max_length=150)
     correct_option = models.CharField(max_length=1, blank=False)
     creator = models.ForeignKey(to=User, on_delete=models.SET_NULL, null=True)
+    verified = models.BooleanField(default=False)
 
     def __str__(self):
         return f"Question({self.question}, {self.creator})"

@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 @method_decorator(login_required, name="dispatch")
 class Quiz(View):
     def get(self, request):
-        questions = Question.objects.all()
+        questions = Question.objects.filter(verified=True)
         return render(
             request,
             "quiz/quiz.html",
@@ -19,8 +19,8 @@ class Quiz(View):
 
     def post(self, request):
         mark = Mark(user=request.user, total=Question.objects.count())
-        for i in range(1, Question.objects.count()+1):
-            q = Question.objects.filter(pk=request.POST.get(f"q{i}", 0)).first()
+        for i in range(1, Question.objects.filter(verified=True).count()+1):
+            q = Question.objects.filter(pk=request.POST.get(f"q{i}", 0), verified=True).first()
             if request.POST.get(f"q{i}o", "") == q.correct_option:
                 mark.got += 1
         mark.save()
@@ -44,9 +44,9 @@ class AddQuestion(View):
             data = request.POST
             q = data.get(f"q{i}", "")
             o1 = data.get(f"q{i}o1", "")
-            o2 = data.get(f"q{i}o1", "")
-            o3 = data.get(f"q{i}o1", "")
-            o4 = data.get(f"q{i}o1", "")
+            o2 = data.get(f"q{i}o2", "")
+            o3 = data.get(f"q{i}o3", "")
+            o4 = data.get(f"q{i}o4", "")
             co = data.get(f"q{i}c", "")
             question = Question(
                 question=q,
