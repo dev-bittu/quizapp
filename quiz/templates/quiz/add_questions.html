@@ -3,7 +3,7 @@
 {% block title %}Add Questions{% endblock %}
 
 {% block body %}
-  <form method="post" action="{% url 'add_question' %}">
+<form method="post" action="{% url 'add_question' %}">
   {% csrf_token %}
   <h1 class="text-center">
     Add Questions
@@ -11,7 +11,9 @@
   <br><br>
   {% for i in questions %}
   <div class="mb-3">
-    <label for="InputQuestion{{ i }}" class="form-label">Question {{ i }}</label>
+    <label for="InputQuestion{{ i }}" class="form-label">
+      Question {{ i }}
+    </label>
     <input type="text" class="form-control" id="InputQuestion{{ i }}" name="q{{ i }}" placeholder="Question {{ i }}" required autofocus>
   </div>
   <div class="row">
@@ -19,14 +21,14 @@
       <input type="text" class="form-control" placeholder="Option 1" name="q{{ i }}o1" required>
     </div>
     <div class="col">
-    <input type="text" class="form-control" placeholder="Option 2" name="q{{ i }}o2" required>
-  </div>
-  <div class="col">
-    <input type="text" class="form-control" placeholder="Option 3" name="q{{ i }}o3" required>
-  </div>
-  <div class="col">
-    <input type="text" class="form-control" placeholder="Option 4" name="q{{ i }}o4" required>
-  </div>
+      <input type="text" class="form-control" placeholder="Option 2" name="q{{ i }}o2" required>
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" placeholder="Option 3" name="q{{ i }}o3" required>
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" placeholder="Option 4" name="q{{ i }}o4" required>
+    </div>
   </div>
   <br>
   <select class="form-select" name="q{{ i }}c" required>
@@ -41,7 +43,9 @@
   <br>
   <div class="mb-3 form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
-    <label class="form-check-label" for="exampleCheck1">I confirmed.</label>
+    <label class="form-check-label" for="exampleCheck1">
+      I confirmed.
+    </label>
   </div>
   <br><br><br>
   <button type="submit" class="btn btn-primary w-100">Submit</button>
