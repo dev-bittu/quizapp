@@ -4,7 +4,7 @@
 
 {% block body %}
 <div class="row">
-  <p>Hello,</p>
+  <p>Hello{% if request.user.is_authenticated %} {{ request.user.username }}{% endif %},</p>
 </div>
 <div class="row">
   <p>My name is Bittu and I am a passionate developer. Welcome to my quiz website!</p>
