@@ -4,6 +4,7 @@
 
 {% block body %}
 </div>
+{% load static %}
 <div class="container-fluid">
 <div class="row mt-5">
   <h1 class="text-center">
@@ -56,14 +57,6 @@
     <button type="submit" class="btn btn-primary w-100">Verify</button>
   </form>
 </div>
-<script>
-  let checkboxes = document.querySelectorAll("input[type = 'checkbox']");
-  const checkAll = (myCheckBox)=>{
-    let chkd = myCheckBox.checked;
-    checkboxes.forEach((checkboxe)=>{
-      checkboxe.checked = chkd;
-    });
-  };
-</script>
+<script src="{% static 'js/verify_question.js' %}"></script>
 <div>
 {% endblock %}
