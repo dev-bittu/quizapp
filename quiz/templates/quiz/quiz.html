@@ -4,48 +4,53 @@
 
 {% block body %}
 <form method="post" action="{% url 'quiz' %}">
-   {% csrf_token %}
-   <h1 class="text-center">
-      Quiz
-   </h1>
-   {% for q in questions %}
+  {% csrf_token %}
+  <h1 class="text-center">
+    Quiz
+  </h1>
+  {% for q in questions %}
   <div class="card border-info">
-     <div class="card-header bg-info text-white">Question {{forloop.counter}}</div>
-   <div class="card-body">
-      <h5 class="user-select-none">{{ q.question }}</h5>
-      <input type="hidden" name="q{{forloop.counter}}" value="{{q.id}}">
-      <div class="form-check">
-         <input class="form-check-input" type="radio" name="q{{forloop.counter}}o" id="q{{forloop.counter}}o1" value="A">
-         <label class="form-check-label" for="q{{forloop.counter}}o1">
+    <div class="card-header bg-info text-white">Question {{forloop.counter}}</div>
+      <div class="card-body">
+        <h5 class="user-select-none">
+          {{ q.question }}
+        </h5>
+        <input type="hidden" name="q{{forloop.counter}}" value="{{q.id}}">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="q{{forloop.counter}}o" id="q{{forloop.counter}}o1" value="A">
+          <label class="form-check-label" for="q{{forloop.counter}}o1">
             {{ q.option1 }}
-         </label>
-      </div>
-      <div class="form-check">
-         <input class="form-check-input" type="radio" name="q{{forloop.counter}}o" id="q{{forloop.counter}}o2" value="B">
-         <label class="form-check-label" for="q{{forloop.counter}}o2">
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="q{{forloop.counter}}o" id="q{{forloop.counter}}o2" value="B">
+          <label class="form-check-label" for="q{{forloop.counter}}o2">
             {{ q.option2 }}
-         </label>
-      </div>
-      <div class="form-check">
-         <input class="form-check-input" type="radio" name="q{{forloop.counter}}o" id="q{{forloop.counter}}o3" value="C">
-         <label class="form-check-label" for="q{{forloop.counter}}o3">
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="q{{forloop.counter}}o" id="q{{forloop.counter}}o3" value="C">
+          <label class="form-check-label" for="q{{forloop.counter}}o3">
             {{ q.option3 }}
-         </label>
-      </div>
-      <div class="form-check">
-         <input class="form-check-input" type="radio" name="q{{forloop.counter}}o" id="q{{forloop.counter}}o4" value="D">
-         <label class="form-check-label" for="q{{forloop.counter}}o4">
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="q{{forloop.counter}}o" id="q{{forloop.counter}}o4" value="D">
+          <label class="form-check-label" for="q{{forloop.counter}}o4">
             {{ q.option4 }}
-         </label>
+          </label>
+        </div>
       </div>
-   </div>
-   </div>
-   <br>
-   {% endfor %}
-   <br>
-   <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
-    <label class="form-check-label" for="exampleCheck1">I confirmed.</label>
+    </div>
+    <br>
+    {% endfor %}
+    <br>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+      <label class="form-check-label" for="exampleCheck1">
+         I confirmed.
+      </label>
+    </div>
   </div>
   <br>
   <button type="submit" class="btn btn-primary w-100">Submit</button>
