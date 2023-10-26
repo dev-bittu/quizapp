@@ -18,7 +18,7 @@ class Quiz(View):
         )
 
     def post(self, request):
-        mark = Mark(user=request.user, total=Question.objects.count())
+        mark = Mark(user=request.user, total=Question.objects.filter(verified=True).count())
         for i in range(1, Question.objects.filter(verified=True).count()+1):
             q = Question.objects.filter(pk=request.POST.get(f"q{i}", 0), verified=True).first()
             if request.POST.get(f"q{i}o", "") == q.correct_option:
