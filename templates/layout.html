@@ -67,9 +67,7 @@
   </div>
   {% endfor %}
   {% endif %}
-  <div class="container mt-5 mb-5">
-    {% block body %}{% endblock %}
-  </div>
+  {% block body %}{% endblock %}
   <script src="{% static 'js/bootstrap.js' %}"></script>
 </body>
 </html>

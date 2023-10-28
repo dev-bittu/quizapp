@@ -3,6 +3,7 @@
 {% block title %}Add Questions{% endblock %}
 
 {% block body %}
+<div class="container mt-5 mb-5">
 <form method="post" action="{% url 'add_question' %}">
   {% csrf_token %}
   <h1 class="text-center">
@@ -50,4 +51,5 @@
   <br><br><br>
   <button type="submit" class="btn btn-primary w-100">Submit</button>
 </form>
+</div>
 {% endblock %}

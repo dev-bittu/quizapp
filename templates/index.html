@@ -3,6 +3,7 @@
 {% block title %}Index{% endblock %}
 
 {% block body %}
+<div class="container mt-5 mb-5">
 <div class="row">
   <p>Hello{% if request.user.is_authenticated %} {{ request.user.username }}{% endif %},</p>
 </div>
@@ -24,5 +25,6 @@
 </div>
 <div class="row">
   <p>~<em>Bittu</em></p>
+</div>
 </div>
 {% endblock %}
