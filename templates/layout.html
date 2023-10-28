@@ -23,7 +23,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           {% if request.user.is_authenticated %}
-          {% if request.user.is_superuser %}
+          {% if request.user.is_staff %}
           <li class="nav-item">
             <a class="nav-link text-center" href="{% url 'manage' %}">Manage</a>
           </li>
