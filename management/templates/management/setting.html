@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block title %}Manage{% endblock %}
+
+{% block body %}
+<div class="row mt-5">
+  <h1 class="text-center">
+    Site Setting
+  </h1>
+</div>
+<form action="{% url 'setting' %}" method="post">
+  {% csrf_token %}
+  <div class="row mt-3">
+    <div class="col-9">
+      <h3>Question add limit</h3>
+    </div>
+    <div class="col-3">
+      <input type="number" min="0" value="{{ info.question_limit }}" name="qlimit">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-success w-100">Save</button>
+</form>
+{% endblock %}

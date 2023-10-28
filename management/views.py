@@ -74,3 +74,16 @@ class VerifyQuestion(View):
                     messages.warning(request, f"No question exists with id {id}")
         messages.success(request, f"{count} questions added")
         return redirect("manage")
+
+@method_decorator(staff_member_required, name="dispatch")
+class Setting(View):
+    def get(self, request):
+        info = {
+            "question_limit": settings.GLOBAL_SETTINGS["questions"]
+        }
+        return render(request, "management/setting.html", {"info": info})
+
+    def post(self, request):
+        settings.GLOBAL_SETTINGS["questions"] = int(request.POST.get("qlimit", 10))
+        messages.success(request, "You preference saved")
+        return redirect("setting")
