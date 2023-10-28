@@ -52,11 +52,13 @@ python manage.py runserver
 4. Create your own questions and quizzes or answer existing ones.
 5. Track your progress and see how your knowledge expands over time.
 
-## Author
-- dev-bittu
+## Contributing
+Contributions are welcome!
+If you have any ideas, suggestions, or bug reports, please open an issue or submit a pull request.
+Make sure to follow the project's code of conduct.
 
-### Contact With Us
-  - [GitHub](https://github.com/dev-bittu "bev-bittu")
+## Author
+- [dev-bittu](https://github.com/dev-bittu "dev-bittu")
 
 ## ToDo
 - Add search functionality for questions and quizzes.
