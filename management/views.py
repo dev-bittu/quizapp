@@ -84,6 +84,10 @@ class Setting(View):
         return render(request, "management/setting.html", {"info": info})
 
     def post(self, request):
-        settings.GLOBAL_SETTINGS["questions"] = int(request.POST.get("qlimit", 10))
-        messages.success(request, "You preference saved")
+        qlimit = int(request.POST.get("qlimit", 10))
+        if qlimit > 0:
+            settings.GLOBAL_SETTINGS["questions"] = qlimit
+            messages.success(request, "You preference saved")
+        else:
+            messages.warning(request, "Question limit can't be 0 or less than 0")
         return redirect("setting")
