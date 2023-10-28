@@ -32,7 +32,7 @@ pip install -r requirements.txt
 ```
 
 ## Usage
-1. Start the Flask development server using the following command:
+1. Start the django development server using the following command:
 ```bash
 python manage.py runserver
 ```
