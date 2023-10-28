@@ -11,20 +11,10 @@ Students can interact with their peers by adding questions and quizzes, challeng
 - **Customizable Learning Experience**: With a wide range of subjects and topics to choose from, students can customize their learning experience.
 - **Enhanced Understanding**: By participating in the platform, students can enhance their understanding of various subjects.
 
-## Prerequisites
-To run this project, you need to have the following installed:
-- Python
-- Django
-
 # Installation
-1. In linux:
+1. For linux:
 ```bash
 sudo apt install python3 git -y
-pip install pillow
-```
-In Termux:
-```bash
-apt install python3 git python-pillow -y
 ```
 In windows: ``Install git and python's latest version from their official sites``
 
