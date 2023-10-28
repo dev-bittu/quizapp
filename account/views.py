@@ -30,7 +30,6 @@ class Login(View):
 class Logout(View):
     def get(self, request):
         logout(request)
-        print("work")
         return redirect("login")
 
 class Register(View):
