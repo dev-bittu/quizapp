@@ -10,7 +10,7 @@ Students can interact with their peers by adding questions and quizzes, challeng
 - **Collaborative Learning**: The platform fosters a collaborative learning environment, where students can learn from each other's questions and quizzes.
 - **Customizable Learning Experience**: With a wide range of subjects and topics to choose from, students can customize their learning experience.
 - **Enhanced Understanding**: By participating in the platform, students can enhance their understanding of various subjects.
-- **Leaderboard**: Get list of top 10 performers.
+- **Leaderboard**: Track top performers.
 
 # Installation
 1. For linux:
