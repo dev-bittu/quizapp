@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Question(models.Model):
-    question = models.TextField(blank=False)
+    question = models.TextField(blank=False, unique=True)
     option1 = models.CharField(blank=False, max_length=150)
     option2 = models.CharField(blank=False, max_length=150)
     option3 = models.CharField(blank=False, max_length=150)

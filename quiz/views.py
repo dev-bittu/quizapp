@@ -39,7 +39,7 @@ class AddQuestion(View):
         )
     
     def post(self, request):
-        count = 0
+        count, already_exists = 0, 0
         for i in range(1, settings.GLOBAL_SETTINGS["questions"]+1):
             data = request.POST
             q = data.get(f"q{i}", "")
@@ -48,6 +48,9 @@ class AddQuestion(View):
             o3 = data.get(f"q{i}o3", "")
             o4 = data.get(f"q{i}o4", "")
             co = data.get(f"q{i}c", "")
+            if Question.objects.filter(question=q).first():
+                already_exists += 1
+                continue
             question = Question(
                 question=q,
                 option1=o1,
@@ -59,6 +62,8 @@ class AddQuestion(View):
             )
             question.save()
             count += 1
+        if already_exists:
+            messages.warning(request, f"{already_exists} questions already exists")
         messages.success(request, f"{count} questions added")
         return redirect("quiz")
 
