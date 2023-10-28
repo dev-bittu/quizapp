@@ -1,5 +1,4 @@
 # quizapp
-
 ## Introduction
 Welcome to our interactive learning platform!
 This platform is designed to provide students with a collaborative and engaging learning environment.
@@ -51,6 +50,13 @@ python manage.py runserver
 3. Sign up for an account on the platform.
 4. Create your own questions and quizzes or answer existing ones.
 5. Track your progress and see how your knowledge expands over time.
+
+## Technologies Used
+- Django: A high-level Python web framework that provides a clean and efficient way to build web applications.
+- HTML/CSS: The standard markup language and stylesheet language used for creating the website's user interface.
+- JavaScript: A programming language that enables interactive and dynamic features on the website.
+- SQLite: A powerful open-source relational database management system used for efficient data storage and retrieval.
+- Git: A version control system used for tracking changes in the project's source code.
 
 ## Contributing
 Contributions are welcome!
