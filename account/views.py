@@ -42,11 +42,12 @@ class Register(View):
     def post(self, request):
         uname = request.POST.get("username", "")
         passwd = request.POST.get("password", "")
-        user = authenticate(username=uname, password=passwd)
+        user = User.objects.filter(username=uname).first()
         if user is None:
             user = User(username=uname)
             user.set_password(passwd)
             user.save()
+            login(request, user)
             messages.success(request, "User created")
             return redirect("login")
         else:
