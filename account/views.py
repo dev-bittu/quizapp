@@ -49,7 +49,7 @@ class Register(View):
             user.save()
             login(request, user)
             messages.success(request, "User created")
-            return redirect("login")
+            return redirect("index")
         else:
             messages.info(request, "User already exists.")
             return redirect("register")
