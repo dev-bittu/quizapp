@@ -1,20 +1,17 @@
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
-from django.views import View
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
-from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-class Login(View):
-    def get(self, request):
+def login_view(request):
+    if request.method == "GET":
         if request.user.is_authenticated:
             messages.info(request, "You are already login. Logout first")
             return redirect("index")
-        return render(request, "account/login.html")
 
-    def post(self, request):
+    else:
         uname = request.POST.get("username", "")
         passwd = request.POST.get("password", "")
         user = authenticate(username=uname, password=passwd)
@@ -24,22 +21,20 @@ class Login(View):
             return redirect("index")
         else:
             messages.warning(request, "Username or password is incorrect")
-        return render(request, "account/login.html")
+    return render(request, "account/login.html")
 
-@method_decorator(login_required, name="dispatch")
-class Logout(View):
-    def get(self, request):
-        logout(request)
-        return redirect("login")
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect("login")
 
-class Register(View):
-    def get(self, request):
+def register(request):
+    if request.method == "GET":
         if request.user.is_authenticated:
             messages.info(request, "You are already logged in")
             return redirect("index")
-        return render(request, "account/register.html")
-    
-    def post(self, request):
+
+    else:
         uname = request.POST.get("username", "")
         passwd = request.POST.get("password", "")
         user = User.objects.filter(username=uname).first()
@@ -52,4 +47,4 @@ class Register(View):
             return redirect("index")
         else:
             messages.info(request, "User already exists.")
-            return redirect("register")
+    return render(request, "account/register.html")
