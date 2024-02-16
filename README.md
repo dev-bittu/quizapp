@@ -13,12 +13,13 @@ Students can interact with their peers by adding questions and quizzes, challeng
 - **Leaderboard**: Track top performers.
 
 # Overview
-We host this application here: devbittu.pythonanywhere.com
+We host this application here: [quizapp](https://devbittu.pythonanywhere.com). Visit and check this out.
 
-Visit amd check this out
-*NOTE:* For verifying your questions use this username and password:-
-username: admin
-password: admin
+**NOTE:** For verifying your questions and administrative tasks use this username and password:-
+
+**username**: admin
+
+**password**: admin
 
 # Installation
 1. For linux:
