@@ -12,6 +12,14 @@ Students can interact with their peers by adding questions and quizzes, challeng
 - **Enhanced Understanding**: By participating in the platform, students can enhance their understanding of various subjects.
 - **Leaderboard**: Track top performers.
 
+# Overview
+We host this application here: devbittu.pythonanywhere.com
+
+Visit amd check this out
+*NOTE:* For verifying your questions use this username and password:-
+username: admin
+password: admin
+
 # Installation
 1. For linux:
 ```bash
